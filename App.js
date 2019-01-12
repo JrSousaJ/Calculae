@@ -22,7 +22,7 @@ export default class App extends Component {
         <View style={styles.buttons}>
          <Button label='AC' triple onClick={this.clearMemory} />
           <Button label='/' operation onClick={this.setOperation} />
-          <Button label='7' onClick={this.addDigit} />
+          <Button label='77' onClick={this.addDigit} />
           <Button label='8' onClick={this.addDigit} />
           <Button label='9' onClick={this.addDigit} />
           <Button label='*' operation  onClick={this.setOperation} />
