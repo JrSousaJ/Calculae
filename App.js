@@ -40,14 +40,13 @@ export default class App extends Component {
     } else {
       const equals = operation === '='
       const values = [...this.state.values]
-      if(this.state.operation=='+')
+      if(this.state.operation=='+' || this.state.operation=='-' || this.state.setOperation=='/' || this.state.setOperation=='*')
       {
         values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
       }
-      try{
-        values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
-      } catch(e){
-        values[0]= this.state.values[0]
+      if(this.state.operation='sqrt'){
+		if(values[0]===0)values[0]=1
+		values[0] =  values[0] * Math.sqrt(values[1])
       }
       values[1]=0
       this.setState({
