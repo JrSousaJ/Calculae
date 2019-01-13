@@ -8,19 +8,24 @@ import {
 
 const styles = StyleSheet.create({
     button: {
-        fontSize: 25,
-        height: Dimensions.get('window').width / 4,
-        width: Dimensions.get('window').width / 4,
-        padding: 24,
-        backgroundColor: '#f0f0f0',
         textAlign: 'center',
-        borderWidth: 1,
-        borderColor: '#888',
+        marginTop: 0,
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlignVertical: 'center',
+        height: Dimensions.get('window').width / 5,
+        width: Dimensions.get('window').width / 4,
+       //padding: 20,
+        justifyContent:'center',
+        backgroundColor: '#c6ecd9',
+        borderWidth: 0.5,
+        borderColor: '#ffffff',
+        justifyContent:'space-between',
 
     },
     operationButton: {
-        color: '#fff',
-        backgroundColor: '#fa8231',
+        color: '#333333',
+        backgroundColor: '#40bf80',
     },
     buttonDouble: {
         width : (Dimensions.get('window').width / 4) * 2,
@@ -32,12 +37,10 @@ const styles = StyleSheet.create({
 })
 export default props => {
     const stylesButton = [styles.button]
-    if(props.double) stylesButton.push(styles.buttonDouble)
-    if(props.triple) stylesButton.push(styles.buttonTriple)
     if(props.operation) stylesButton.push(styles.operationButton)
     return (
         <TouchableHighlight onPress={() => props.onClick(props.label)}>
-            <Text style={stylesButton}>{props.label}</Text>
+            <Text adjustsFontSizeToFit={true} style={stylesButton}>{props.label}</Text>
         </TouchableHighlight>
     )
 }
