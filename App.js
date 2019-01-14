@@ -44,10 +44,33 @@ export default class App extends Component {
       {
         values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
       }
-      if(this.state.operation='sqrt'){
+      if(this.state.operation==='sqrt'){
 		if(values[0]===0)values[0]=1
 		values[0] =  values[0] * Math.sqrt(values[1])
-      }
+	  }
+	  else if(this.state.operation==='cube')
+	  {
+		  if(values[0]==0)values[0]=1
+		  values[0] = values[0] * Math.pow(values[1],3)
+	  }
+	  else if(this.state.operation === 'quad')
+	  {
+		  if(values[0]==0)values[0]=1
+		  values[0]=values[0]* Math.pow(values[1],2)
+	  }
+	  else if(this.state.operation === 'inver')
+	  {
+		  if(values[0]===0)values[0]=1
+		  values[0]=values[0] * (1.0/values[1])
+	  }
+	  else if(this.state.operation === 'sinal')
+	  {
+		  values[0]=-(values[0])
+	  }
+	  else if(this.state.operation === '%')
+	  {
+		  values[0] = values[0] * (0.01*values[1])
+	  }
       values[1]=0
       this.setState({
         displayValue: `${values[0]}`,
@@ -83,11 +106,10 @@ export default class App extends Component {
           <Button label='2' onClick={this.addDigit} />
           <Button label='3' onClick={this.addDigit} />
           <Button label='+' operation onClick={this.setOperation} />
-          <Button label='±' operation onClick={this.setOperation} />
+          <Button label='±' operation onClick={() => this.setOperation('sinal')} />
           <Button label='0' onClick={this.addDigit} />
           <Button label=',' operation onClick={() => this.setOperation('.')} />
           <Button label='=' operation onClick={() => this.setOperation('=')} />
-
         </View>
       </View>
     );
